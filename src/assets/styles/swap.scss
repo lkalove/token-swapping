@@ -1,0 +1,103 @@
+@import 'theme.scss';
+
+div.swap {
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    @include themify($themes) {
+      color: themed('buttonTextColor');
+      background: themed('buttonColor');
+    }
+  }
+
+  button:disabled {
+    @include themify($themes) {
+      color: themed('buttonDisabledColor');
+      background: themed('buttonDisabledBgColor');
+    }
+  }
+
+  @include themify($themes) {
+    color: themed('textColor');
+  }
+
+  div.swap-wrapper {
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    padding: 10px;
+    background: rgba(100, 100, 100, 0.1);
+    border-radius: 5px;
+
+    .subtitle {
+      font-size: 15px;
+      font-weight: bold;
+      text-align: left;
+      margin: 20px 0;
+    }
+
+    .swap-input-wrapper {
+      margin: 0 auto;
+      border-radius: 5px;
+      height: 50px;
+      @include themify($themes) {
+        background: themed('inputBackgroundColor');
+      }
+
+      input {
+        font-size: 20px;
+        @include themify($themes) {
+          color: themed('textColor');
+        }
+        border: none;
+        padding: 0 10px;
+        background: none;
+        height: 50px;
+        width: calc(100% - 150px);
+        float: left;
+      }
+
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+      input:focus {
+        border: none;
+      }
+
+      button {
+        height: 30px;
+        margin: 10px;
+        width: 100px;
+        float: right;
+      }
+    }
+    .switch-from-to {
+      @include themify($themes) {
+        background: themed('switchIcn');
+      }
+      width: 50px;
+      height: 30px;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    .price-info {
+      margin: 10px auto;
+      font-size: 15px;
+    }
+  }
+  .swap-btn {
+    width: 420px;
+    height: 50px;
+    margin-top: 10px;
+  }
+}

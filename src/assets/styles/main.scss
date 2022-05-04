@@ -1,0 +1,58 @@
+@import 'theme.scss';
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  &.theme-light {
+    background: white;
+  }
+  &.theme-dark {
+    background: black;
+  }
+}
+
+#app {
+  @include themify($themes) {
+    color: themed('textColor');
+  }
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  display: block;
+}
+
+#nav {
+  padding: 30px;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: pink;
+    }
+  }
+}
+
+.toggle-theme {
+  cursor: pointer;
+  width: 100px;
+  height: 15px;
+  font-size: 15px;
+  border: 2px solid pink;
+  border-radius: 5px;
+  padding: 10px;
+
+  &.theme-light {
+    background-color: white;
+  }
+
+  &.theme-dark {
+    background-color: black;
+  }
+
+}

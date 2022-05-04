@@ -1,0 +1,53 @@
+$themes: (
+        light: (
+                backgroundColor: #fff,
+                inputBackgroundColor: rgba(100, 100, 100, 0.1),
+                textColor: rgba(10, 10, 10, 0.6),
+                buttonTextColor: rgba(10, 10, 10, 0.6),
+                buttonTextHoverColor: #61b0e7,
+                buttonColor: rgba(200, 100, 30, 0.1),
+                buttonDisabledBgColor: rgba(100, 100, 100, 0.1),
+                buttonDisabledColor: rgba(0, 0, 0, 0.3),
+                buttonBorder: 2px solid #fff,
+                backgroundSelectColor: rgba(255, 255, 255, 1),
+                backgroundSelectHover: rgba(100, 100, 100, 0.1),
+                modalBackground: rgba(0, 0, 0, 0.8),
+                switchIcn: url("~@/assets/images/light/switch.svg") no-repeat center
+        ),
+        dark: (
+                backgroundColor: #222,
+                inputBackgroundColor: rgba(200, 200, 200, 0.1),
+                textColor: rgba(200, 200, 200, 0.6),
+                buttonTextColor: rgba(200, 200, 200, 0.6),
+                buttonTextHoverColor: rgba(200, 200, 200, 0.6),
+                buttonColor: #333,
+                buttonDisabledBgColor: rgba(100, 100, 100, 0.1),
+                buttonDisabledColor: rgba(100, 100, 100, 0.3),
+                buttonBorder: 1px solid #aaa,
+                backgroundSelectColor: rgba(10, 10, 10, 1),
+                backgroundSelectHover: rgba(100, 100, 100, 0.1),
+                modalBackground: rgba(0, 0, 0, 0.8),
+                switchIcn: url("~@/assets/images/dark/switch.svg") no-repeat center
+        ),
+);
+
+@mixin themify($themes: $themes) {
+  @each $theme, $map in $themes {
+
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+
+      @content;
+      $theme-map: null !global;
+    }
+
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

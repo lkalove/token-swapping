@@ -1,0 +1,12 @@
+@import 'theme.scss';
+
+.account {
+  @include themify($themes) {
+    color: themed('textColor');
+    background: themed('inputBackgroundColor');
+  }
+  width: 400px;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 10px;
+}

@@ -1,0 +1,2 @@
+const ACCOUNT = { "address": "cosmos1e7cp6ams3cdg49s4ux20v2vf7dwvw343xydpr5"};
+export default ACCOUNT;
