@@ -2,9 +2,7 @@
   <div id='nav'>
     <p class='toggle-theme {{theme}}' v-on:click=setBodyClass>Theme:
       {{ theme === 'theme-light' ? 'Light' : 'Dark' }}</p>
-    <router-link to='/'>Swap</router-link>
-    |
-    <router-link to='/account'>Account</router-link>
+    <p class='account'>{{ accountInfo.address }}</p>
   </div>
   <router-view />
 </template>
@@ -14,6 +12,7 @@
 </style>
 <script lang='ts'>
 import { defineComponent } from 'vue';
+import isEmpty from 'is-empty';
 
 export default defineComponent({
   name: 'App',
@@ -27,6 +26,16 @@ export default defineComponent({
       localStorage.setItem('swap-theme', newTheme);
       this.theme = newTheme;
     },
+  },
+  computed: {
+    accountInfo(this: any) {
+      return this.$store.getters['accountStore/accountInfo'];
+    },
+  },
+  created(this: any) {
+    if (isEmpty(this.$store.getters['accountStore/accountInfo'].address)) {
+      this.$store.dispatch('accountStore/fetchAccountInfo');
+    }
   },
   data() {
     return {

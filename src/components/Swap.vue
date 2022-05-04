@@ -27,6 +27,7 @@
 <script lang='ts'>
 import { defineComponent } from 'vue';
 import empty from 'is-empty';
+import isEmpty from 'is-empty';
 
 export default defineComponent({
   name: 'Swap',

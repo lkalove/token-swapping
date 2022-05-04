@@ -30,7 +30,8 @@ body {
 }
 
 #nav {
-  padding: 30px;
+  display: inline-block;
+  width: calc(100% - 40px);
 
   a {
     font-weight: bold;
@@ -50,7 +51,7 @@ body {
   border: 2px solid pink;
   border-radius: 5px;
   padding: 10px;
-
+  float: left;
   &.theme-light {
     background-color: white;
   }
@@ -61,4 +62,13 @@ body {
   &:hover {
     font-weight: bold;
   }
+}
+
+.account {
+  border: 2px solid pink;
+  width: 300px;
+  font-size: 12px;
+  border-radius: 5px;
+  float: right;
+  padding: 10px;
 }
