@@ -17,7 +17,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'App',
   methods: {
-    initBodyClass(className) {
+    initBodyClass(className: string) {
       document.body.setAttribute('class', className);
     },
     setBodyClass() {
