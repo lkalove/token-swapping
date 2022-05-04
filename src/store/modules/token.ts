@@ -7,8 +7,8 @@ import TOKENS from '@/sample/tokens';
 
 export interface tokenState {
   swapInfo: {
-    fromAmount: number;
-    toAmount: number;
+    fromAmount: any;
+    toAmount: any;
     price: number;
     balance: number;
     fromToken: string;
@@ -26,10 +26,10 @@ const calculate = (swapInfoState: any, swapInfo: any, tokenPoolState: Array<any>
     (pool.tokenB === fromToken && pool.tokenA === toToken));
   let toAmount = 0;
   let price = 0;
-  if (tokenPool && tokenPool.tokenA === fromToken) {
+  if (tokenPool && tokenPool.tokenA === fromToken && fromAmount >= 0) {
     toAmount = fromAmount * tokenPool.price;
     price = tokenPool.price;
-  } else if (tokenPool && tokenPool.tokenB === fromToken) { //reverse
+  } else if (tokenPool && tokenPool.tokenB === fromToken && fromAmount >= 0) { //reverse
     toAmount = fromAmount / tokenPool.price;
     price = 1 / tokenPool.price;
   }
@@ -64,7 +64,7 @@ const swap = (swapInfoState: any, balances: Array<any>) => {
 };
 
 const displayFloat = (value: number) => {
-  if (!value) return 0;
+  if (!value) return value;
   return parseFloat(value.toFixed(8));
 };
 
@@ -107,8 +107,8 @@ export const tokenStore: Module<tokenState, rootState> = {
   namespaced: true,
   state: {
     swapInfo: {
-      fromAmount: 0,
-      toAmount: 0,
+      fromAmount: '',
+      toAmount: '',
       price: 0,
       balance: 0,
       fromToken: '',

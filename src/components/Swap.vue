@@ -39,11 +39,10 @@ export default defineComponent({
   computed: {
     swapInfo(this: any) {
       const swapInfo = this.$store.getters['tokenStore/swapInfo'];
-      let { toToken, fromToken, fromAmount } = swapInfo;
+      let { toToken, fromToken} = swapInfo;
       if (empty(toToken)) toToken = null;
       if (empty(fromToken)) fromToken = null;
-      if (fromAmount === 0) fromAmount = '';
-      return { ...swapInfo, toToken, fromToken, fromAmount };
+      return { ...swapInfo, toToken, fromToken};
     },
   },
   methods: {
@@ -52,7 +51,7 @@ export default defineComponent({
     },
     setFrom(this: any, e: any) {
       this.$store.dispatch('tokenStore/setAmount', {
-        fromAmount: parseFloat(e.target.value) || 0,
+        fromAmount: parseFloat(e.target.value),
       });
     },
     switchFromTo(this: any) {
