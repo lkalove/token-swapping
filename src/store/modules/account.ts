@@ -10,8 +10,8 @@ export const accountStore: Module<accountState, rootState> = {
   namespaced: true,
   state: {
     accountInfo: {
-      address: ""
-    }
+      address: '',
+    },
   },
   mutations: {
     setAccount(state: accountState, data) {
@@ -23,7 +23,7 @@ export const accountStore: Module<accountState, rootState> = {
       //assume fetching data from the server
       return Promise.resolve(ACCOUNT).then((result) => {
         return commit('setAccount', result);
-      }).catch(e => console.error("error fetching account: ", e));
+      }).catch(e => console.error('error fetching account: ', e));
     },
   },
   getters: {

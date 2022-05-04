@@ -11,8 +11,11 @@
       <div class='swap-input-wrapper'><input :disabled='true' v-model='swapInfo.toAmount' />
         <button v-on:click="openPopup('to')">{{ swapInfo.toToken || 'Select' }}</button>
       </div>
-      <div class='price-info' v-if='swapInfo.price > 0'>1 {{ swapInfo.fromToken }} = {{ swapInfo.price }} {{ swapInfo.toToken }}</div>
-    </div>      <button class='swap-btn' :disabled='isSwapBtnDisabled()' v-on:click='swap()'>Swap</button>
+      <div class='price-info' v-if='swapInfo.price > 0'>1 {{ swapInfo.fromToken }} = {{ swapInfo.price }}
+        {{ swapInfo.toToken }}
+      </div>
+    </div>
+    <button class='swap-btn' :disabled='isSwapBtnDisabled()' v-on:click='swap()'>Swap</button>
 
   </div>
 </template>
@@ -48,7 +51,7 @@ export default defineComponent({
     },
     setFrom(this: any, e: any) {
       this.$store.dispatch('tokenStore/setAmount', {
-        fromAmount: parseFloat(e.target.value) || 0
+        fromAmount: parseFloat(e.target.value) || 0,
       });
     },
     switchFromTo(this: any) {
@@ -59,9 +62,9 @@ export default defineComponent({
       const swapInfo = this.$store.getters['tokenStore/swapInfo'];
       return swapInfo.price === 0 || swapInfo.balance < swapInfo.fromAmount;
     },
-    swap(this:any) {
+    swap(this: any) {
       this.$store.dispatch('tokenStore/swap');
-    }
+    },
   },
 
 });

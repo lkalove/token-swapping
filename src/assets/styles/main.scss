@@ -1,4 +1,5 @@
 @import 'theme.scss';
+
 html {
   height: 100%;
 }
@@ -6,9 +7,11 @@ html {
 body {
   min-height: 100%;
   overflow: hidden;
+
   &.theme-light {
     background: white;
   }
+
   &.theme-dark {
     background: black;
   }

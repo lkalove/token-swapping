@@ -69,6 +69,7 @@ div.swap {
       input[type=number] {
         -moz-appearance: textfield;
       }
+
       input:focus {
         border: none;
       }
@@ -80,6 +81,7 @@ div.swap {
         float: right;
       }
     }
+
     .switch-from-to {
       @include themify($themes) {
         background: themed('switchIcn');
@@ -95,6 +97,7 @@ div.swap {
       font-size: 15px;
     }
   }
+
   .swap-btn {
     width: 420px;
     height: 50px;

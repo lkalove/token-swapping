@@ -1,6 +1,7 @@
 <template>
   <div id='nav'>
-    <p class="toggle-theme {{theme}}" v-on:click=setBodyClass>Theme: {{theme === 'theme-light' ? "Light" : "Dark"}}</p>
+    <p class='toggle-theme {{theme}}' v-on:click=setBodyClass>Theme:
+      {{ theme === 'theme-light' ? 'Light' : 'Dark' }}</p>
     <router-link to='/'>Swap</router-link>
     |
     <router-link to='/account'>Account</router-link>
@@ -21,21 +22,21 @@ export default defineComponent({
       document.body.setAttribute('class', className);
     },
     setBodyClass() {
-      const newTheme = document.body.className.includes('theme-light') ? "theme-dark" : "theme-light";
+      const newTheme = document.body.className.includes('theme-light') ? 'theme-dark' : 'theme-light';
       document.body.className = newTheme;
-      localStorage.setItem("swap-theme", newTheme);
+      localStorage.setItem('swap-theme', newTheme);
       this.theme = newTheme;
     },
   },
   data() {
     return {
-      theme: localStorage.getItem('swap-theme')
-    }
+      theme: localStorage.getItem('swap-theme'),
+    };
   },
   mounted() {
     // get the previous setup from the localStorage
     const theme = localStorage.getItem('swap-theme');
-    this.initBodyClass(theme || "theme-light");
+    this.initBodyClass(theme || 'theme-light');
   },
 });
 </script>

@@ -20,10 +20,10 @@ export const popupStore: Module<popupState, rootState> = {
   },
   actions: {
     openPopup({ commit }, type: string) {
-      commit('setPopup', {visibility: true, type});
+      commit('setPopup', { visibility: true, type });
     },
     closePopup({ commit }) {
-      commit('setPopup', {visibility: false, type: ''});
+      commit('setPopup', { visibility: false, type: '' });
     },
   },
   getters: {
